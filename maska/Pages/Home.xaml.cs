@@ -15,16 +15,21 @@ using System.Windows.Shapes;
 
 namespace maska
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class Home : Page
     {
-        public MainWindow()
+        public Home()
         {
             InitializeComponent();
-            Manager.frame = MainFrame;
-            Manager.frame.Navigate(new Home());
+        }
+
+        private void ProductsCatalog(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new Masks());
+        }
+
+        private void MaterialsCatalog(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new Materials());
         }
     }
 }

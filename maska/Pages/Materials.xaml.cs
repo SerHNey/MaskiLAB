@@ -20,8 +20,8 @@ namespace maska
     /// </summary>
     public partial class Materials : Page
     {
-        public Frame frame1;
-        public Materials(Frame frame)
+        MaskiLABEntities db = MaskiLABEntities.GetContext();
+        public Materials()
         {
             InitializeComponent();
             var allTypes = MaskiLABEntities.GetContext().MaterialType.ToList();
@@ -29,9 +29,6 @@ namespace maska
             {
                 Title = "Все типы"
             });
-            ComboType.ItemsSource = allTypes;
-            ComboType.SelectedIndex = 0;
-            frame = frame1;
             var current = MaskiLABEntities.GetContext().Material.ToList();
             LViewTours.ItemsSource = current;
         }
@@ -41,7 +38,20 @@ namespace maska
         }
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateMaterial();
+            if (search.Text != "" && LViewTours != null)
+            {
+                var filter_name = db.Material.ToList().Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
+                LViewTours.ItemsSource = filter_name;
+            }
+            else
+            {
+                if (LViewTours != null)
+                {
+                    var current = db.Material.ToList();
+                    LViewTours.ItemsSource = current;
+                }
+
+            }
         }
 
         private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,6 +62,10 @@ namespace maska
         private void CheckActual_Checked(object sender, RoutedEventArgs e)
         {
             UpdateMaterial();
+        }
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new Home());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using maska.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,21 +19,18 @@ namespace maska
     /// <summary>
     /// Логика взаимодействия для Maski.xaml
     /// </summary>
-    public partial class Maski : Page
-    {
-        public Frame frame1;
-        public Maski(Frame frame)
+    public partial class Masks : Page
+    { 
+        MaskiLABEntities db = MaskiLABEntities.GetContext();
+        public Masks()
         {
             InitializeComponent();
-            var allTypes = MaskiLABEntities.GetContext().ProductType.ToList();
+            var allTypes = db.ProductType.ToList();
             allTypes.Insert(0, new ProductType
             {
                 Title = "Все типы"
             });
-            ComboType.ItemsSource = allTypes;
-            ComboType.SelectedIndex = 0;
-            frame = frame1;
-            var current = MaskiLABEntities.GetContext().Product.ToList();
+            var current = db.Product.ToList(); 
             LViewTours.ItemsSource = current;
         }
         private void UpdateMaski()
@@ -41,7 +39,20 @@ namespace maska
         }
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateMaski();
+            if (search.Text != "" && LViewTours != null)
+            {
+                var filter_name = db.Product.ToList().Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
+                LViewTours.ItemsSource = filter_name;
+            }
+            else
+            {
+                if(LViewTours != null)
+                {
+                    var current = db.Product.ToList();
+                    LViewTours.ItemsSource = current;
+                }
+                
+            }
         }
 
         private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -52,6 +63,16 @@ namespace maska
         private void CheckActual_Checked(object sender, RoutedEventArgs e)
         {
             UpdateMaski();
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new Home());
+        }
+
+        private void Basket_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new Basket());
         }
     }
 }

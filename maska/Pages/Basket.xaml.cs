@@ -13,18 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace maska
+namespace maska.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Basket.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Basket : Page
     {
-        public MainWindow()
+        public Basket()
         {
             InitializeComponent();
-            Manager.frame = MainFrame;
-            Manager.frame.Navigate(new Home());
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.GoBack();
         }
     }
 }
