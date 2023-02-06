@@ -56,7 +56,6 @@
                                 </Image.Source>
                             </Image>
                             <Label Content="{Binding Cost, StringFormat={}{0:N2} ₽}" Grid.Row="2" HorizontalAlignment="Center" Margin="10 0" Grid.Column="0" FontSize="20"/>
-
                         </Grid>
                     </Border>
                 </DataTemplate>

@@ -21,6 +21,7 @@
             <Button Content="BACK" Margin="1in 0.05in" FontSize="20" FontWeight="Black" Click="Back" Style="{DynamicResource BuyButton}"/>
 
             <TextBox x:Name="search" Style="{DynamicResource TextBoxStyle1}" Grid.Column="1" MaxWidth="5in" TextChanged="TBoxSearch_TextChanged"/>
+            
             <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="0.2in 0">
                 <Button x:Name="FilerBtn" Style="{DynamicResource ButtonStyle1}">
                     <Image Source="../Image/filter.png" Stretch="Uniform"/>

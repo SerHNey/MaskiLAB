@@ -15,18 +15,11 @@ namespace maska
     
     public partial class MaskiLABEntities : DbContext
     {
-        private static MaskiLABEntities _instance;
         public MaskiLABEntities()
             : base("name=MaskiLABEntities")
         {
         }
-
-        public static MaskiLABEntities GetContext()
-        {
-            if (_instance == null) _instance = new MaskiLABEntities();
-            return _instance;
-        }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
