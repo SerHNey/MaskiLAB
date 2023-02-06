@@ -19,7 +19,14 @@ namespace maska
             : base("name=MaskiLABEntities")
         {
         }
-    
+
+        private static MaskiLABEntities _context;
+
+        public static MaskiLABEntities GetContext()
+        {
+            return _context ?? (_context = new MaskiLABEntities());
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
