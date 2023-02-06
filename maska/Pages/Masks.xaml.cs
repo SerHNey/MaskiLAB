@@ -33,7 +33,6 @@ namespace maska
             });
             var current = db.Product.ToList();
             LViewTours.ItemsSource = current;
-            this.frame1 = frame1;
         }
         private void UpdateMaski()
         {
@@ -76,5 +75,16 @@ namespace maska
         {
             Manager.frame.Navigate(new Basket());
         }
+
+        public List<Product> SortList(List<Product> products)
+        {
+            products.Sort();
+            return products;
+        } 
+        public List<Product> ReverseList(List<Product> products)
+        {
+            products.Reverse();
+            return products;
+        } 
     }
 }
