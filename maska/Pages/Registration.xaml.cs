@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace maska
+namespace maska.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Registration.xaml
@@ -27,7 +27,8 @@ namespace maska
             frame1 = frame;
         }
 
-        private void registration_Click(object sender, RoutedEventArgs e)
+
+        private void registration_Click(object sender, MouseButtonEventArgs e)
         {
             string log = login.Text;
             string pas = password.Text;
@@ -40,15 +41,14 @@ namespace maska
                     {
                         if (pas == pas1)
                         {
-                            List<maska.Users> user = new List<maska.Users>() { new Users() };
-                            int count = Entities.GetContext().Users.Count();
-                            user[0].id = count + 1;
-                            user[0].login = log;
+                            Users user = new Users();
+                            int count = MaskiLABEntities.GetContext().Users.Count();
+                            user.login = log;
 
-                            user[0].password = pas;
-                            Entities.GetContext().Users.Add(user[0]);
-                            Entities.GetContext().SaveChanges();
-                            frame1.Navigate(new avtorization(frame1));
+                            user.password = pas;
+                            MaskiLABEntities.GetContext().Users.Add(user);
+                            MaskiLABEntities.GetContext().SaveChanges();
+                            frame1.Navigate(new Authorization(frame1));
                         }
                         else
                         {
@@ -89,12 +89,13 @@ namespace maska
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            frame1.Navigate(new avtorization(frame1));
+            frame1.Navigate(new Authorization(frame1));
         }
 
         private void registration_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
-            frame1.Navigate(new Glavnaya("Glavn", frame1));
+            frame1.Navigate(new Authorization(frame1));
         }
+
     }
 }

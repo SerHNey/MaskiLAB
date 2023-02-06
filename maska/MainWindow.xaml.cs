@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using maska.Pages;
 
 namespace maska
 {
@@ -24,7 +25,7 @@ namespace maska
         {
             InitializeComponent();
             Manager.frame = MainFrame;
-            Manager.frame.Navigate(new Home());
+            Manager.frame.Navigate(new Authorization(MainFrame));
         }
     }
 }

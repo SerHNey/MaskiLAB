@@ -15,18 +15,15 @@ namespace maska
     
     public partial class MaskiLABEntities : DbContext
     {
+        public static MaskiLABEntities _context;
         public MaskiLABEntities()
             : base("name=MaskiLABEntities")
         {
         }
-
-        private static MaskiLABEntities _context;
-
         public static MaskiLABEntities GetContext()
         {
             return _context ?? (_context = new MaskiLABEntities());
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -46,5 +43,6 @@ namespace maska
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

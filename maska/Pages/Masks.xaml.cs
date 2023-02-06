@@ -79,5 +79,16 @@ namespace maska
             Product item = button.DataContext as Product;
             BasketList.products.Add(item);
         }
+
+        public List<Product> SortList(List<Product> products)
+        {
+            products.Sort();
+            return products;
+        } 
+        public List<Product> ReverseList(List<Product> products)
+        {
+            products.Reverse();
+            return products;
+        } 
     }
 }

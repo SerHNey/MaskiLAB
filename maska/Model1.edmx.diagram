@@ -31,6 +31,7 @@
         <AssociationConnector Association="MaskiLABModel.FK_ProductMaterial_Product" ManuallyRouted="false" />
         <AssociationConnector Association="MaskiLABModel.FK_ProductSale_Product" ManuallyRouted="false" />
         <AssociationConnector Association="MaskiLABModel.MaterialSupplier" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MaskiLABModel.Users" Width="1.5" PointX="7.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

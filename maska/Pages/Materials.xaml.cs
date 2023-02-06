@@ -20,6 +20,7 @@ namespace maska
     /// </summary>
     public partial class Materials : Page
     {
+        public Frame frame;
         MaskiLABEntities db = MaskiLABEntities.GetContext();
         public Materials()
         {
@@ -65,7 +66,7 @@ namespace maska
         }
         private void Back(object sender, RoutedEventArgs e)
         {
-            Manager.frame.Navigate(new Home());
+            Manager.frame.Navigate(new Home(frame));
         }
         private void Buy_click(object sender, RoutedEventArgs e)
         {
