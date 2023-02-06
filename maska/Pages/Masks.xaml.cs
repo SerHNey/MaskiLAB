@@ -20,9 +20,10 @@ namespace maska
     /// Логика взаимодействия для Maski.xaml
     /// </summary>
     public partial class Masks : Page
-    { 
+    {
+        public Frame frame1;
         MaskiLABEntities db = MaskiLABEntities.GetContext();
-        public Masks()
+        public Masks(Frame frame1)
         {
             InitializeComponent();
             var allTypes = db.ProductType.ToList();
@@ -30,8 +31,9 @@ namespace maska
             {
                 Title = "Все типы"
             });
-            var current = db.Product.ToList(); 
+            var current = db.Product.ToList();
             LViewTours.ItemsSource = current;
+            this.frame1 = frame1;
         }
         private void UpdateMaski()
         {
@@ -67,7 +69,7 @@ namespace maska
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Manager.frame.Navigate(new Home());
+            Manager.frame.Navigate(new Home(frame1));
         }
 
         private void Basket_Click(object sender, RoutedEventArgs e)

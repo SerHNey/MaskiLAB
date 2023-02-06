@@ -158,6 +158,16 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" />
+          <Property Name="fio" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <Association Name="FK_Agent_AgentType">
           <End Role="AgentType" Type="Self.AgentType" Multiplicity="1" />
           <End Role="Agent" Type="Self.Agent" Multiplicity="*" />
@@ -330,6 +340,7 @@
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Agent_AgentType" Association="Self.FK_Agent_AgentType">
             <End Role="AgentType" EntitySet="AgentType" />
             <End Role="Agent" EntitySet="Agent" />
@@ -755,7 +766,18 @@
             <End Role="Material" EntitySet="Material" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="MaskiLABModel.Users" />
         </EntityContainer>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -928,6 +950,17 @@
               <ScalarProperty Name="ID" ColumnName="SupplierID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MaskiLABModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="fio" ColumnName="fio" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
