@@ -68,5 +68,13 @@ namespace maska
         {
             Manager.frame.Navigate(new Home(frame));
         }
+        private void Buy_click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button == null)
+                return;
+            Material item = button.DataContext as Material;
+            BasketList.materials.Add(item);
+        }
     }
 }

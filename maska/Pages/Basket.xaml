@@ -39,13 +39,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border x:Name="border" CornerRadius="40" Background="White" BorderBrush="#045C70" BorderThickness="3.5" SnapsToDevicePixels="true" Padding="15" Margin="0.1in">
-                        <Grid Width="3in" Height="3.5in">
+                        <Grid Width="2.5in" Height="2.5in">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="10*"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label Content="{Binding Title}" HorizontalAlignment="Center" Grid.Row="0" FontSize="15" FontWeight="Bold"/>
+                            <Label Content="{Binding Title}" HorizontalAlignment="Center" Grid.Row="0" FontSize="10" FontWeight="Bold" />
                             <Image Grid.Row="1" Stretch="Uniform"  HorizontalAlignment="Center" Margin="0 0 0 10">
                                 <Image.Source>
                                     <Binding Path="Image">

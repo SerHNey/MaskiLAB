@@ -8,7 +8,7 @@ namespace maska
 {
     public class BasketList
     {
-        double Cost { get; set; }
-        string Title { get; set; }
+       public static List<Product> products = new List<Product>();
+       public static List<Material> materials = new List<Material>();
     }
 }
