@@ -77,5 +77,15 @@ namespace maska
             Manager.frame.Navigate(new Basket());
         }
 
+        public List<Product> SortList(List<Product> products)
+        {
+            products.Sort();
+            return products;
+        } 
+        public List<Product> ReverseList(List<Product> products)
+        {
+            products.Reverse();
+            return products;
+        } 
     }
 }
