@@ -215,6 +215,7 @@
     <Resource Include="Image\filter.png" />
     <Resource Include="Image\sort.png" />
     <Resource Include="Image\search.png" />
+    <Resource Include="Image\basket.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -25,11 +25,7 @@ namespace maska
         public Masks()
         {
             InitializeComponent();
-            var allTypes = db.ProductType.ToList();
-            allTypes.Insert(0, new ProductType
-            {
-                Title = "Все типы"
-            });
+            
             var current = db.Product.ToList(); 
             LViewTours.ItemsSource = current;
         }
@@ -73,6 +69,15 @@ namespace maska
         private void Basket_Click(object sender, RoutedEventArgs e)
         {
             Manager.frame.Navigate(new Basket());
+        }
+
+        private void Buy_click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button == null)
+                return;
+            Product item = button.DataContext as Product;
+            BasketList.products.Add(item);
         }
     }
 }

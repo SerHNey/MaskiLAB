@@ -30,7 +30,7 @@
                     <Image Source="../Image/sort.png" Stretch="Uniform"/>
                 </Button>
                 <Button x:Name="Basket" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Click="Basket_Click">
-                    <Image Source="../Image/заглушка.jpg" Stretch="Uniform"/>
+                    <Image Source="../Image/basket.png" Stretch="Uniform"/>
                 </Button>
             </StackPanel>
         </Grid>
@@ -43,7 +43,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border x:Name="border" CornerRadius="40" Background="White" BorderBrush="#045C70" BorderThickness="3.5" SnapsToDevicePixels="true" Padding="15" Margin="0.1in">
-                        <Grid Width="3in" Height="3.5in">
+                        <Grid Width="4in" Height="3.5in">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition Height="10*"/>
@@ -65,9 +65,9 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Label Content="{Binding MinCostForAgent, StringFormat={}{0:N2} ₽}" Grid.Column="0" FontSize="20"/>
+                                <Label Content="{Binding Cost, StringFormat={}{1:N2} ₽}" Grid.Column="0" FontSize="20"/>
                                 <Label Content="{Binding ProductionPersonCount, StringFormat={}{0:N2} Ост}" Grid.Column="1" FontSize="20" Margin="10 0 "/>
-                                <Button Content="BUY" Style="{DynamicResource BuyButton}" Grid.Column="2" FontWeight="Black"/>
+                                <Button Content="BUY" Style="{DynamicResource BuyButton}" Grid.Column="2" FontWeight="Black" Click="Buy_click"/>
                             </Grid>
                         </Grid>
                     </Border>
