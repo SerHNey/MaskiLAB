@@ -22,7 +22,7 @@ namespace maska
     public partial class Masks : Page
     { 
         MaskiLABEntities db = MaskiLABEntities.GetContext();
-        public Masks()
+        public Masks(Frame frame1)
         {
             InitializeComponent();
             
@@ -63,7 +63,7 @@ namespace maska
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Manager.frame.Navigate(new Home());
+            Manager.frame.GoBack();
         }
 
         private void Basket_Click(object sender, RoutedEventArgs e)
@@ -80,15 +80,41 @@ namespace maska
             BasketList.products.Add(item);
         }
 
-        public List<Product> SortList(List<Product> products)
+        private void FilerBtn_Click(object sender, RoutedEventArgs e)
         {
-            products.Sort();
-            return products;
-        } 
-        public List<Product> ReverseList(List<Product> products)
+            (sender as Button).ContextMenu.IsEnabled = true;
+            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as Button).ContextMenu.IsOpen = true;
+        }
+
+        private void SortBtn_Click(object sender, RoutedEventArgs e)
         {
-            products.Reverse();
-            return products;
-        } 
+            (sender as Button).ContextMenu.IsEnabled = true;
+            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as Button).ContextMenu.IsOpen = true;
+
+        }
+
+        private void SortByАlphabet_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().OrderBy(product => product.Title);
+        }
+
+        private void ReverseByАlphabet_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().OrderByDescending(product => product.Title);
+        }
+
+        private void SortByCost_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().OrderBy(product => product.Cost);
+        }
+
+        private void ReverseByCost_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().OrderByDescending(product => product.Cost);
+        }
     }
 }
