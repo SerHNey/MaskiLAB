@@ -23,6 +23,7 @@ namespace maska
     {
         public Frame frame;
         MaskiLABEntities db = MaskiLABEntities.GetContext();
+        IEnumerable<Material> currentList;
         public Materials()
         {
             InitializeComponent();
@@ -31,8 +32,8 @@ namespace maska
             {
                 Title = "Все типы"
             });
-            var current = MaskiLABEntities.GetContext().Material.ToList();
-            LViewTours.ItemsSource = current;
+            currentList = db.Material.ToList();
+            LViewTours.ItemsSource = currentList;
         }
         private void UpdateMaterial()
         {
@@ -85,22 +86,26 @@ namespace maska
 
         private void SortByАlphabet_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().OrderBy(material => material.Title);
+            currentList = currentList.OrderBy(material => material.Title);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void ReverseByАlphabet_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().OrderByDescending(material => material.Title);
+            currentList = currentList.OrderBy(material => material.Title);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void SortByCost_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().OrderBy(material => material.Cost);
+            currentList = currentList.OrderBy(material => material.Cost);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void ReverseByCost_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().OrderByDescending(material => material.Cost);
+            currentList = currentList.OrderByDescending(material => material.Cost);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void FilerBtn_Click(object sender, RoutedEventArgs e)
@@ -121,32 +126,43 @@ namespace maska
 
         private void ClearFilter_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList();
+            currentList = db.Material.ToList();
+            LViewTours.ItemsSource = currentList;
         }
 
         private void ClothFilter_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 1);
+            currentList = db.Material.ToList();
+            currentList = currentList.Where(material => material.MaterialTypeID == 1);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void KernelFilter_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 2);
+            currentList = db.Material.ToList();
+            currentList = currentList.Where(material => material.MaterialTypeID == 2);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void SiliconeFilter_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 3);
+            currentList = db.Material.ToList();
+            currentList = currentList.Where(material => material.MaterialTypeID == 3);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void RubberBandFilter_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 4);
+            currentList = db.Material.ToList();
+            currentList = currentList.Where(material => material.MaterialTypeID == 4);
+            LViewTours.ItemsSource = currentList;
         }
 
         private void CottonFilter_Click(object sender, RoutedEventArgs e)
         {
-            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 5);
+            currentList = db.Material.ToList();
+            currentList = currentList.Where(material => material.MaterialTypeID == 5);
+            LViewTours.ItemsSource = currentList;
         }
     }
 }
