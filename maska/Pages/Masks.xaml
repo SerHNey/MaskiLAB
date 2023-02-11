@@ -32,10 +32,19 @@
                     </Button.Content>
                     <Button.ContextMenu>
                         <ContextMenu >
-                            <MenuItem Foreground="Black" Header="По имени а-я"/>
-                            <MenuItem Foreground="Black" Header="По имени я-а"/>
-                            <MenuItem Foreground="Black" Header="По возростанию цены"/>
-                            <MenuItem Foreground="Black" Header="По убыванию цены"/>
+                            <MenuItem Header="По типу">
+                                <MenuItem x:Name="HalfMasksFilter" Header="Полумаски" Click="HalfMasksFilter_Click"/>
+                                <MenuItem x:Name="BandagesFilter" Header="Повязки" Click="BandagesFilter_Click"/>
+                                <MenuItem x:Name="MasksFilter" Header="Маски" Click="MasksFilter_Click"/>
+                                <MenuItem x:Name="RespiratorsFilter" Header="Респираторы" Click="RespiratorsFilter_Click"/>
+                                <MenuItem x:Name="OnTheFaceFilter" Header="На лицо" Click="OnTheFaceFilter_Click"/>
+                                <MenuItem x:Name="FullFaceFilter" Header="Полнолицевые" Click="FullFaceFilter_Click"/>
+                                <MenuItem x:Name="ReplacementPartsFilter" Header="Сменные части" Click="ReplacementPartsFilter_Click"/>
+                                <MenuItem x:Name="SparePartsFilter" Header="Запасные части" Click="SparePartsFilter_Click"/>
+                                <MenuItem x:Name="HoldersFilter" Header="Держители" Click="HoldersFilter_Click"/>
+                                <MenuItem x:Name="PreFiltersFilter" Header="Предфильтры" Click="PreFiltersFilter_Click"/>
+                            </MenuItem>
+                            <MenuItem x:Name="ClearFilter" Header="Очистить фильтры" Click="ClearFilter_Click"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

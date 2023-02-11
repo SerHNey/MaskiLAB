@@ -1,4 +1,5 @@
-﻿using System;
+﻿using maska.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -75,6 +76,77 @@ namespace maska
                 return;
             Material item = button.DataContext as Material;
             BasketList.materials.Add(item);
+        }
+
+        private void Basket_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new Basket());
+        }
+
+        private void SortByАlphabet_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().OrderBy(material => material.Title);
+        }
+
+        private void ReverseByАlphabet_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().OrderByDescending(material => material.Title);
+        }
+
+        private void SortByCost_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().OrderBy(material => material.Cost);
+        }
+
+        private void ReverseByCost_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().OrderByDescending(material => material.Cost);
+        }
+
+        private void FilerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).ContextMenu.IsEnabled = true;
+            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as Button).ContextMenu.IsOpen = true;
+        }
+
+        private void SortBtn_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).ContextMenu.IsEnabled = true;
+            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as Button).ContextMenu.IsOpen = true;
+        }
+
+        private void ClearFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList();
+        }
+
+        private void ClothFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 1);
+        }
+
+        private void KernelFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 2);
+        }
+
+        private void SiliconeFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 3);
+        }
+
+        private void RubberBandFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 4);
+        }
+
+        private void CottonFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Material.ToList().Where(material => material.MaterialTypeID == 5);
         }
     }
 }

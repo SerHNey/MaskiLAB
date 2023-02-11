@@ -21,12 +21,45 @@
             <Button Content="BACK" Margin="1in 0.05in" FontSize="20" FontWeight="Black" Click="Back" Style="{DynamicResource BuyButton}"/>
 
             <TextBox x:Name="search" Style="{DynamicResource TextBoxStyle1}" Grid.Column="1" MaxWidth="5in" TextChanged="TBoxSearch_TextChanged"/>
-            <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="0.2in 0">
-                <Button x:Name="FilerBtn" Style="{DynamicResource ButtonStyle1}">
-                    <Image Source="../Image/filter.png" Stretch="Uniform"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <Button x:Name="FilerBtn" Style="{DynamicResource ButtonStyle1}" Click="FilerBtn_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../Image/filter.png" Stretch="Uniform"/>
+                            <Path x:Name="BtnArrow" Margin="4" VerticalAlignment="Center" Width="10" Fill="#FF527DB5" Stretch="Uniform" HorizontalAlignment="Right" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "/>
+                        </StackPanel>
+                    </Button.Content>
+                    <Button.ContextMenu>
+                        <ContextMenu >
+                            <MenuItem Header="По типу">
+                                <MenuItem x:Name="ClothFilter" Header="Ткань" Click="ClothFilter_Click"/>
+                                <MenuItem x:Name="KernelFilter" Header="Стержень" Click="KernelFilter_Click"/>
+                                <MenuItem x:Name="SiliconeFilter" Header="Силикон" Click="SiliconeFilter_Click"/>
+                                <MenuItem x:Name="RubberBandFilter" Header="Резинка" Click="RubberBandFilter_Click"/>
+                                <MenuItem x:Name="CottonFilter" Header="Вата" Click="CottonFilter_Click"/>
+                            </MenuItem>
+                            <MenuItem x:Name="ClearFilter" Header="Очистить фильтры" Click="ClearFilter_Click"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
                 </Button>
-                <Button x:Name="SortBtn" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in">
-                    <Image Source="../Image/sort.png" Stretch="Uniform"/>
+                <Button x:Name="SortBtn" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Click="SortBtn_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="../Image/sort.png" Stretch="Uniform"/>
+                            <Path x:Name="BtnArrowSort" Margin="4" VerticalAlignment="Center" Width="10" Fill="#FF527DB5" Stretch="Uniform" HorizontalAlignment="Right" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "/>
+                        </StackPanel>
+                    </Button.Content>
+                    <Button.ContextMenu>
+                        <ContextMenu >
+                            <MenuItem Name="SortByАlphabet" Foreground="Black" Header="По имени а-я" Click="SortByАlphabet_Click"/>
+                            <MenuItem Name="ReverseByАlphabet" Foreground="Black" Header="По имени я-а" Click="ReverseByАlphabet_Click"/>
+                            <MenuItem Name="SortByCost" Foreground="Black" Header="По возростанию цены" Click="SortByCost_Click"/>
+                            <MenuItem Name="ReverseByCost" Foreground="Black" Header="По убыванию цены" Click="ReverseByCost_Click"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+                <Button x:Name="Basket" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Click="Basket_Click">
+                    <Image Source="../Image/basket.png" Stretch="Uniform"/>
                 </Button>
             </StackPanel>
         </Grid>

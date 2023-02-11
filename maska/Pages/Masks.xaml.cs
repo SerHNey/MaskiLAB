@@ -21,13 +21,12 @@ namespace maska
     /// </summary>
     public partial class Masks : Page
     { 
-        MaskiLABEntities db = MaskiLABEntities.GetContext();
+        private static MaskiLABEntities db = MaskiLABEntities.GetContext();
         public Masks(Frame frame1)
         {
             InitializeComponent();
             
-            var current = db.Product.ToList(); 
-            LViewTours.ItemsSource = current;
+            LViewTours.ItemsSource = db.Product.ToList();
         }
         private void UpdateMaski()
         {
@@ -115,6 +114,62 @@ namespace maska
         private void ReverseByCost_Click(object sender, RoutedEventArgs e)
         {
             LViewTours.ItemsSource = db.Product.ToList().OrderByDescending(product => product.Cost);
+        }
+
+        private void HalfMasksFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 1);
+        }
+
+        private void BandagesFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 2);
+        }
+
+        private void MasksFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 3);
+        }
+
+        private void RespiratorsFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 4);
+
+        }
+
+        private void OnTheFaceFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 5);
+        }
+
+        private void FullFaceFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 6);
+        }
+
+        private void ReplacementPartsFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 7);
+        }
+
+        private void SparePartsFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 8);
+        }
+
+        private void HoldersFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 9);
+        }
+
+        private void PreFiltersFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList().Where(product => product.ProductTypeID == 10);
+        }
+
+        private void ClearFilter_Click(object sender, RoutedEventArgs e)
+        {
+            LViewTours.ItemsSource = db.Product.ToList();
         }
     }
 }
