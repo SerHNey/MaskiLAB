@@ -44,7 +44,7 @@ namespace maska.Pages
                         Type.SelectedIndex= i;
                     i++;
                 }
-                if(product.Image == null | product.Image != "")
+                if(product.Image != null | product.Image == "")
                 {
                 string imagepath = product.Image;
                 imagepath = imagepath.Replace("\\", "/");
