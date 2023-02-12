@@ -161,6 +161,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Rolle.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Shop.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

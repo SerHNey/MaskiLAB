@@ -44,5 +44,6 @@ namespace maska
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Rolle> Rolle { get; set; }
     }
 }

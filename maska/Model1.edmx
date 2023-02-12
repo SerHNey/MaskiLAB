@@ -128,6 +128,13 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DefectedPercent" Type="float" />
         </EntityType>
+        <EntityType Name="Rolle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Shop">
           <Key>
             <PropertyRef Name="ID" />
@@ -165,7 +172,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="nvarchar" MaxLength="50" />
           <Property Name="password" Type="nvarchar" MaxLength="50" />
-          <Property Name="role" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="int" />
           <Property Name="fio" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK_Agent_AgentType">
@@ -324,6 +331,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_Rolle">
+          <End Role="Rolle" Type="Self.Rolle" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rolle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище MaskiLABModelContainer">
           <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AgentPriorityHistory" EntityType="Self.AgentPriorityHistory" Schema="dbo" store:Type="Tables" />
@@ -337,6 +356,7 @@
           <EntitySet Name="ProductMaterial" EntityType="Self.ProductMaterial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSale" EntityType="Self.ProductSale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rolle" EntityType="Self.Rolle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -392,6 +412,10 @@
           <AssociationSet Name="FK_Shop_Agent" Association="Self.FK_Shop_Agent">
             <End Role="Agent" EntitySet="Agent" />
             <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Rolle" Association="Self.FK_Users_Rolle">
+            <End Role="Rolle" EntitySet="Rolle" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -767,6 +791,11 @@
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
           <EntitySet Name="Users" EntityType="MaskiLABModel.Users" />
+          <EntitySet Name="Rolle" EntityType="MaskiLABModel.Rolle" />
+          <AssociationSet Name="FK_Users_Rolle" Association="MaskiLABModel.FK_Users_Rolle">
+            <End Role="Rolle" EntitySet="Rolle" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Users">
           <Key>
@@ -775,9 +804,30 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="Int32" />
           <Property Name="fio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rolle" Relationship="MaskiLABModel.FK_Users_Rolle" FromRole="Users" ToRole="Rolle" />
         </EntityType>
+        <EntityType Name="Rolle">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="MaskiLABModel.FK_Users_Rolle" FromRole="Rolle" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Users_Rolle">
+          <End Type="MaskiLABModel.Rolle" Role="Rolle" Multiplicity="0..1" />
+          <End Type="MaskiLABModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rolle">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -958,6 +1008,14 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rolle">
+            <EntityTypeMapping TypeName="MaskiLABModel.Rolle">
+              <MappingFragment StoreEntitySet="Rolle">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -52,7 +52,7 @@ namespace maska
             var track = ((ListView)sender).SelectedItem as Product;
             if(track != null && CurrentList.user != null)
             {
-                if(CurrentList.user.role == "admin")
+                if(CurrentList.user.role == 1)
                     Manager.frame.Navigate(new AddEditProducts(track));
             }
         }

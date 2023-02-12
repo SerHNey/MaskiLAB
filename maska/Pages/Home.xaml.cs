@@ -20,8 +20,19 @@ namespace maska
         public Home()
         {
             InitializeComponent();
-            if(CurrentList.user!= null) 
-                userInfo.Content = CurrentList.user.fio + "   " + CurrentList.user.role;
+            if(CurrentList.user!= null)
+            {
+                if (CurrentList.user.role == 1)
+                {
+                    userInfo.Content = "ФИО: "+ CurrentList.user.fio + "   " + "Роль: Администратор";
+                }
+                if (CurrentList.user.role == 2)
+                {
+                    userInfo.Content = "ФИО: "+CurrentList.user.fio + "   " + "Роль: Пользователь";
+                }
+            }
+
+
         }
 
         private void ProductsCatalog(object sender, RoutedEventArgs e)
