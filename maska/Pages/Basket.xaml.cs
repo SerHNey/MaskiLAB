@@ -37,13 +37,13 @@ namespace maska.Pages
             {
                 items.Add(new BasketItem(item.Title, item.Cost, item.Image));
             }
-            count.Content = items.Count;
+            count.Content = items.Count + " шт";
             decimal pr = 0;
             foreach (var item in items)
             {
                 pr += item.Cost;
             }
-            prize.Content = pr.ToString();
+            prize.Content = pr.ToString() + " руб";
             return items;
         }
         class BasketItem
@@ -62,6 +62,14 @@ namespace maska.Pages
         private void Back(object sender, RoutedEventArgs e)
         {
             Manager.frame.GoBack();
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            BasketList.products.Clear();
+            BasketList.materials.Clear();
+            GetItems();
+            LViewTours.UpdateLayout();
         }
     }
 }

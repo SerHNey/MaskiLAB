@@ -10,25 +10,27 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="3in"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="0.8in"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
         <Button Content="BACK" Margin="0.3in 0.05in" Padding="0.3in 0" HorizontalAlignment="Left" FontSize="20" FontWeight="Black" Click="Back" Style="{DynamicResource BuyButton}"/>
-        <Grid Grid.Column="1" Grid.Row="1" Margin="0 0 0 2in">
+        <Grid Grid.Column="1" Grid.Row="1" Height="5in" VerticalAlignment="Top" >
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.4*"/>
                 <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="0.4*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="В корзине" FontSize="30"/>
-            <Label x:Name="count" FontSize="10" Grid.Row="1"/>
+            <Label Content="В корзине" FontSize="30" VerticalAlignment="Top"/>
+            <Label x:Name="count" FontSize="20" Grid.Row="1" VerticalAlignment="Top"/>
             <Label x:Name="prize" FontSize="25" Grid.Row="2"/>
-            <Button Content="BUY" Style="{DynamicResource BuyButton}" Grid.Row="3" FontSize="20" FontWeight="Bold" Margin="0 0.1in"/>
+            <Button Content="BUY" Style="{DynamicResource BuyButton}" Grid.Row="3" FontSize="20" FontWeight="Bold" Margin="0 0 0.3in 0" VerticalAlignment="Top" Padding="10" />
+            <Button Content="CLEAR" Style="{DynamicResource BuyButton}" Grid.Row="4" FontSize="15" FontWeight="Bold" Margin="0 0 0.3in 0" VerticalAlignment="Top" Click="Clear_Click"/>
         </Grid>
         <ListView Grid.Row="1" Name="LViewTours" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalContentAlignment="Center" Padding="0.1in 0in" Margin="0.3in 0">
             <ListView.ItemsPanel>
@@ -39,14 +41,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border x:Name="border" CornerRadius="40" Background="White" BorderBrush="#045C70" BorderThickness="3.5" SnapsToDevicePixels="true" Padding="15" Margin="0.1in">
-                        <Grid Width="2.5in" Height="2.5in">
+                        <Grid Width="3in" Height="3.6in">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="4*"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label Content="{Binding Title}" HorizontalAlignment="Center" Grid.Row="0" FontSize="10" FontWeight="Bold" />
-                            <Image Grid.Row="1" Stretch="Uniform"  HorizontalAlignment="Center" Margin="0 0 0 10">
+                            <TextBlock Text="{Binding Title}" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center" Grid.Row="0" FontSize="15" FontWeight="Bold"/>
+                            <Image Grid.Row="1" Stretch="Uniform"  HorizontalAlignment="Center">
                                 <Image.Source>
                                     <Binding Path="Image">
                                         <Binding.TargetNullValue>
@@ -55,7 +57,7 @@
                                     </Binding>
                                 </Image.Source>
                             </Image>
-                            <Label Content="{Binding Cost, StringFormat={}{0:N2} ₽}" Grid.Row="2" HorizontalAlignment="Center" Margin="10 0" Grid.Column="0" FontSize="20"/>
+                            <Label Content="{Binding Cost, StringFormat={}{0:N2} ₽}" Grid.Row="2" HorizontalAlignment="Center" FontSize="30"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

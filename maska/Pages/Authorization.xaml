@@ -110,7 +110,6 @@
                Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
         <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="login" 
                  TextWrapping="Wrap" 
-                 TextChanged="login_TextChanged" 
                  Height="60"
                  Width="520" Margin="340,176,340,464" FontSize="40" TextAlignment="Left"/>
         <Label Content="Пароль" 

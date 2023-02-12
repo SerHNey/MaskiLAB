@@ -17,6 +17,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Label Grid.ColumnSpan="3" Grid.Column="1" VerticalAlignment="Top" Name="userInfo"/>
+
         <Button Grid.Column="1" Height="3in" Width="3in" Click="ProductsCatalog" >
             <Button.Content>
                 <StackPanel>

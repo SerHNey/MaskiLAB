@@ -17,16 +17,16 @@ namespace maska
 {
     public partial class Home : Page
     {
-        public Frame frame1;
-        public Home(Frame frame)
+        public Home()
         {
             InitializeComponent();
-            frame1 = frame;
+            if(CurrentList.user!= null) 
+                userInfo.Content = CurrentList.user.fio + "   " + CurrentList.user.role;
         }
 
         private void ProductsCatalog(object sender, RoutedEventArgs e)
         {
-            Manager.frame.Navigate(new Masks(frame1));
+            Manager.frame.Navigate(new Masks());
         }
 
         private void MaterialsCatalog(object sender, RoutedEventArgs e)

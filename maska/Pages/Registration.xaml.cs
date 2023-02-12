@@ -20,11 +20,9 @@ namespace maska.Pages
     /// </summary>
     public partial class Registration : Page
     {
-        public Frame frame1;
-        public Registration(Frame frame)
+        public Registration()
         {
             InitializeComponent();
-            frame1 = frame;
         }
 
 
@@ -48,7 +46,7 @@ namespace maska.Pages
                             user.password = pas;
                             MaskiLABEntities.GetContext().Users.Add(user);
                             MaskiLABEntities.GetContext().SaveChanges();
-                            frame1.Navigate(new Authorization(frame1));
+                            Manager.frame.Navigate(new Authorization());
                         }
                         else
                         {
@@ -89,12 +87,12 @@ namespace maska.Pages
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            frame1.Navigate(new Authorization(frame1));
+            Manager.frame.Navigate(new Authorization());
         }
 
         private void registration_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
-            frame1.Navigate(new Authorization(frame1));
+            Manager.frame.Navigate(new Authorization());
         }
 
     }

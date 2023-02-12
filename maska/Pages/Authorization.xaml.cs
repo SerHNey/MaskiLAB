@@ -20,44 +20,33 @@ namespace maska.Pages
     /// </summary>
     public partial class Authorization : Page
     {
-        public Authorization(Frame frame)
+        public Authorization()
         {
-            frame1 = frame;
             InitializeComponent();
         }
-        public Frame frame1;
         public int vx = 0;
 
-        private void login_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void password_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        List<maska.Users> users = new List<maska.Users>();
+        List<Users> users = new List<Users>();
 
         private void reg_Click(object sender, RoutedEventArgs e)
         {
-            frame1.Navigate(new Registration(frame1));
+            Manager.frame.Navigate(new Registration());
         }
 
         private void Entre_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             string klients = login.Text;
             string pas = password.Password;
-            int count = MaskiLABEntities.GetContext().Users.Count();
-            users = MaskiLABEntities.GetContext().Users.ToList();
+            int count = CurrentList.db.Users.Count();
+            users = CurrentList.db.Users.ToList();
             for (int i = 0; i < count; i++)
             {
                 if (users[i].login == klients)
                 {
                     if (users[i].password == pas)
                     {
-                        frame1.Navigate(new Home(frame1));
+                        CurrentList.user = users[i];
+                        Manager.frame.Navigate(new Home());
                         vx = 1;
                         break;
                     }
@@ -71,12 +60,12 @@ namespace maska.Pages
 
         private void Reg_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            frame1.Navigate(new Registration(frame1));
+            Manager.frame.Navigate(new Registration());
         }
 
         private void Gues_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            frame1.Navigate(new Home(frame1));
+            Manager.frame.Navigate(new Home());
         }
     }
 }

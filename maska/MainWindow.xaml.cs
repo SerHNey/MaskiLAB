@@ -25,7 +25,14 @@ namespace maska
         {
             InitializeComponent();
             Manager.frame = MainFrame;
-            Manager.frame.Navigate(new Authorization(MainFrame));
+            Manager.frame.Navigate(new Authorization());
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            CurrentList.db = MaskiLABEntities.GetContext();
+            CurrentList.products = CurrentList.db.Product.ToList();
+            CurrentList.materials = CurrentList.db.Material.ToList();
         }
     }
 }

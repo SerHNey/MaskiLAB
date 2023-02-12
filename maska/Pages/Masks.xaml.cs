@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -21,46 +22,40 @@ namespace maska
     /// </summary>
     public partial class Masks : Page
     { 
-        private static MaskiLABEntities db = MaskiLABEntities.GetContext();
         IEnumerable<Product> currentList;
-        public Masks(Frame frame1)
+        public Masks()
         {
             InitializeComponent();
-            currentList = db.Product.ToList();
+            currentList = CurrentList.products;
             LViewTours.ItemsSource = currentList;
-        }
-        private void UpdateMaski()
-        {
-            var currentTours = MaskiLABEntities.GetContext().Product.ToList();
         }
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (search.Text != "" && LViewTours != null)
             {
-                var filter_name = db.Product.ToList().Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
+                var filter_name = CurrentList.products.ToList().Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
                 LViewTours.ItemsSource = filter_name;
             }
             else
             {
                 if(LViewTours != null)
                 {
-                    var current = db.Product.ToList();
+                    var current = CurrentList.products.ToList();
                     LViewTours.ItemsSource = current;
                 }
                 
             }
         }
 
-        private void ComboType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        protected void HandleDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            UpdateMaski();
+            var track = ((ListView)sender).SelectedItem as Product;
+            if(track != null && CurrentList.user != null)
+            {
+                if(CurrentList.user.role == "admin")
+                    Manager.frame.Navigate(new AddEditProducts(track));
+            }
         }
-
-        private void CheckActual_Checked(object sender, RoutedEventArgs e)
-        {
-            UpdateMaski();
-        }
-
         private void Back(object sender, RoutedEventArgs e)
         {
             Manager.frame.GoBack();
@@ -123,77 +118,77 @@ namespace maska
 
         private void HalfMasksFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 1);
             LViewTours.ItemsSource = currentList;
         }
 
         private void BandagesFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 2);
             LViewTours.ItemsSource = currentList;
         }
 
         private void MasksFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 3);
             LViewTours.ItemsSource = currentList;
         }
 
         private void RespiratorsFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 4);
             LViewTours.ItemsSource = currentList;
         }
 
         private void OnTheFaceFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 5);
             LViewTours.ItemsSource = currentList;
         }
 
         private void FullFaceFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 6);
             LViewTours.ItemsSource = currentList;
         }
 
         private void ReplacementPartsFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 7);
             LViewTours.ItemsSource = currentList;
         }
 
         private void SparePartsFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 8);
             LViewTours.ItemsSource = currentList;
         }
 
         private void HoldersFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 9);
             LViewTours.ItemsSource = currentList;
         }
 
         private void PreFiltersFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             currentList = currentList.Where(product => product.ProductTypeID == 10);
             LViewTours.ItemsSource = currentList;
         }
 
         private void ClearFilter_Click(object sender, RoutedEventArgs e)
         {
-            currentList = db.Product.ToList();
+            currentList = CurrentList.db.Product.ToList();
             LViewTours.ItemsSource = currentList;
         }
     }

@@ -69,7 +69,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <ListView Grid.Row="1" Name="LViewTours" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalContentAlignment="Center" Padding="0.1in 0in" Margin="0 0.2in 0 0">
+        <ListView Grid.Row="1" Name="LViewTours" MouseDoubleClick ="HandleDoubleClick"  ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalContentAlignment="Center" Padding="0.1in 0in" Margin="0 0.2in 0 0">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
@@ -78,14 +78,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border x:Name="border" CornerRadius="40" Background="White" BorderBrush="#045C70" BorderThickness="3.5" SnapsToDevicePixels="true" Padding="15" Margin="0.1in">
-                        <Grid Width="4in" Height="3.5in">
+                        <Grid Width="3in" Height="3.6in">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition Height="10*"/>
+                                <RowDefinition Height="4*"/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label Content="{Binding Title}" HorizontalAlignment="Center" Grid.Row="0" FontSize="15" FontWeight="Bold"/>
-                            <Image Grid.Row="1" Stretch="Uniform"  HorizontalAlignment="Center" Margin="0 0 0 10">
+                            <TextBlock Text="{Binding Title}" TextAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Center" Grid.Row="0" FontSize="15" FontWeight="Bold"/>
+                            <Image Grid.Row="1" Stretch="Uniform"  HorizontalAlignment="Center">
                                 <Image.Source>
                                     <Binding Path="Image">
                                         <Binding.TargetNullValue>
@@ -94,15 +94,15 @@
                                     </Binding>
                                 </Image.Source>
                             </Image>
-                            <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="10 0">
+                            <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="15 0" VerticalAlignment="Bottom">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Label Content="{Binding Cost, StringFormat={}{1:N2} ₽}" Grid.Column="0" FontSize="20"/>
-                                <Label Content="{Binding ProductionPersonCount, StringFormat={}{0:N2} Ост}" Grid.Column="1" FontSize="20" Margin="10 0 "/>
-                                <Button Content="BUY" Style="{DynamicResource BuyButton}" Grid.Column="2" FontWeight="Black" Click="Buy_click"/>
+                                <Label Content="{Binding Cost, StringFormat={}{1:N2} ₽}" Grid.Column="0" FontSize="20" VerticalAlignment="Center"/>
+                                <Label Content="{Binding ProductionPersonCount, StringFormat={}{0:N2} Ост}" Grid.Column="1" FontSize="20" Margin="10 0 " VerticalAlignment="Center"/>
+                                <Button Content="BUY" Style="{DynamicResource BuyButton}" Grid.Column="2" FontWeight="Black" Click="Buy_click" />
                             </Grid>
                         </Grid>
                     </Border>
