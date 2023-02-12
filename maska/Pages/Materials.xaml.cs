@@ -25,11 +25,11 @@ namespace maska
         public Materials()
         {
             InitializeComponent();
-            var allTypes = CurrentList.db.MaterialType.ToList();
-            allTypes.Insert(0, new MaterialType
+            if (CurrentList.user != null)
             {
-                Title = "Все типы"
-            });
+                if (CurrentList.user.role == 1)
+                    Add.Visibility = Visibility.Visible;
+            }
             currentList = CurrentList.materials.ToList();
             LViewTours.ItemsSource = currentList;
         }
@@ -50,6 +50,22 @@ namespace maska
 
             }
         }
+
+        protected void HandleDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var track = ((ListView)sender).SelectedItem as Material;
+            if (track != null && CurrentList.user != null)
+            {
+                if (CurrentList.user.role == 1)
+                    Manager.frame.Navigate(new AddEditMaterials(track, this));
+            }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new AddEditMaterials(null, this));
+        }
+
         private void Back(object sender, RoutedEventArgs e)
         {
             Manager.frame.Navigate(new Home());

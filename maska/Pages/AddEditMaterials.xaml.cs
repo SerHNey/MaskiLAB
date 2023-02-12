@@ -20,35 +20,35 @@ using System.Windows.Shell;
 namespace maska.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AddEditProducts.xaml
+    /// Логика взаимодействия для AddEditMaterials.xaml
     /// </summary>
-    public partial class AddEditProducts : Page
+    public partial class AddEditMaterials : Page
     {
         string imagePath;
         string pathTo;
-        Product thisproduct;
-        Masks Masks;
+        Material thisMaterial;
+        Materials Materials;
         bool add = false;
-        public AddEditProducts(Product product,Masks masks)
+        public AddEditMaterials(Material material, Materials materials)
         {
             InitializeComponent();
-            Masks= masks;
-            if(product != null )
+            Materials = materials;
+            if(material != null )
             {
-                Title.Text = product.Title;
-                Cost.Text = product.Cost.ToString();
-                CountPack.Text = product.ProductionPersonCount.ToString();
+                Title.Text = material.Title;
+                Cost.Text = material.Cost.ToString();
+                CountPack.Text = material.CountInPack.ToString();
                 int i = 0;
-                foreach (var item in CurrentList.db.ProductType.ToList())
+                foreach (var item in CurrentList.db.MaterialType.ToList())
                 {
                     Type.Items.Add(item.Title);
-                    if(item.ID == product.ProductTypeID)
+                    if(item.ID == material.MaterialTypeID)
                         Type.SelectedIndex= i;
                     i++;
                 }
-                if(product.Image != null | product.Image == "")
+                if(material.Image != null | material.Image == "")
                 {
-                string imagepath = product.Image;
+                string imagepath = material.Image;
                 imagepath = imagepath.Replace("\\", "/");
                 Regex reg = new Regex("/");
                 imagepath = reg.Replace(imagepath, "../", 1);
@@ -56,13 +56,13 @@ namespace maska.Pages
                 imagepath = imagepath.Replace("\\bin", "");
                 Image.ImageSource = BitmapFromUri(new Uri(imagepath));
                 }
-                thisproduct = product;
+                thisMaterial = material;
             }
             else
             {
                 delete.Visibility = Visibility.Hidden;
                 add = true;
-                foreach (var item in CurrentList.db.ProductType.ToList())
+                foreach (var item in CurrentList.db.MaterialType.ToList())
                 {
                     Type.Items.Add(item.Title);
                 }
@@ -71,7 +71,7 @@ namespace maska.Pages
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Masks.LViewTours.ItemsSource = CurrentList.products;
+            Materials.LViewTours.ItemsSource = CurrentList.materials;
             Manager.frame.GoBack();
         }
 
@@ -96,7 +96,6 @@ namespace maska.Pages
             else if (Cost.Text == "")
                 Cost.Text = "Cost";
         }
-
         private void loadPicture_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -116,10 +115,10 @@ namespace maska.Pages
         {
             try
             {
-                if(thisproduct != null)
-                    pathTo = "\\products\\" + thisproduct.ID + ".jpg";
+                if(thisMaterial != null)
+                    pathTo = "\\materials\\" + thisMaterial.ID + ".jpg";
                 else
-                    pathTo = "\\products\\" + CurrentList.db.Product.ToList().Count+1 + ".jpg";
+                    pathTo = "\\products\\" + CurrentList.db.Material.ToList().Count + 1 + ".jpg";
                 string path = pathTo.Replace("\\", "/");
                 Regex reg = new Regex("/");
                 path = reg.Replace(path, "../", 1);
@@ -168,39 +167,39 @@ namespace maska.Pages
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             if (add)
-                thisproduct = new Product();
-            thisproduct.Title = Title.Text;
-            thisproduct.Cost = decimal.Parse(Cost.Text);
-            thisproduct.ProductionPersonCount = int.Parse(CountPack.Text);
-            thisproduct.ProductTypeID = CurrentList.db.ProductType.ToList().Where(x => x.Title== Type.SelectedValue).FirstOrDefault().ID;
+                thisMaterial = new Material();
+            thisMaterial.Title = Title.Text;
+            thisMaterial.Cost = decimal.Parse(Cost.Text);
+            thisMaterial.CountInPack = int.Parse(CountPack.Text);
+            thisMaterial.MaterialTypeID = CurrentList.db.MaterialType.ToList().Where(x => x.Title== Type.SelectedValue).FirstOrDefault().ID;
             if (pathTo != null)
             {
-                thisproduct.Image = pathTo;
+                thisMaterial.Image = pathTo;
             }
             else
-                thisproduct.Image = null;
+                thisMaterial.Image = null;
             if (add)
             {
-                CurrentList.db.Product.Add(thisproduct);
+                CurrentList.db.Material.Add(thisMaterial);
                 CurrentList.db.SaveChanges();
             }
             else
             {
                 CurrentList.db.SaveChanges();
             }
-            CurrentList.products = CurrentList.db.Product.ToList();
+            CurrentList.materials = CurrentList.db.Material.ToList();
             MessageBox.Show("OK");
         }
+
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                CurrentList.db.Product.Remove(thisproduct);
-                Masks.LViewTours.ItemsSource = CurrentList.products;
+                CurrentList.db.Material.Remove(thisMaterial);
+                Materials.LViewTours.ItemsSource = CurrentList.materials;
                 Manager.frame.GoBack();
             }
         }
-
     }
 }

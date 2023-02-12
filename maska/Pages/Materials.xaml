@@ -19,7 +19,9 @@
                 <ColumnDefinition Width="0.4*"/>
             </Grid.ColumnDefinitions>
             <Button Content="BACK" Margin="1in 0.05in" FontSize="20" FontWeight="Black" Click="Back" Style="{DynamicResource BuyButton}"/>
-
+            <Button x:Name="Add" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Grid.Column="1" HorizontalAlignment="Left" Click="Add_Click" Visibility="Hidden">
+                <Image Source="../Image/medicine.png" Stretch="Uniform"/>
+            </Button>
             <TextBox x:Name="search" Style="{DynamicResource TextBoxStyle1}" Grid.Column="1" MaxWidth="5in" TextChanged="TBoxSearch_TextChanged"/>
             <StackPanel Orientation="Horizontal" Grid.Column="2">
                 <Button x:Name="FilerBtn" Style="{DynamicResource ButtonStyle1}" Click="FilerBtn_Click">
@@ -63,7 +65,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <ListView Grid.Row="1" Name="LViewTours" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalContentAlignment="Center" Padding="0.1in 0in" Margin="0 0.2in 0 0">
+        <ListView Grid.Row="1" Name="LViewTours" MouseDoubleClick ="HandleDoubleClick" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalContentAlignment="Center" Padding="0.1in 0in" Margin="0 0.2in 0 0">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>

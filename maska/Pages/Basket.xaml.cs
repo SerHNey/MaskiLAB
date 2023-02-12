@@ -68,8 +68,7 @@ namespace maska.Pages
         {
             BasketList.products.Clear();
             BasketList.materials.Clear();
-            GetItems();
-            LViewTours.UpdateLayout();
+            LViewTours.ItemsSource =  GetItems();
         }
     }
 }

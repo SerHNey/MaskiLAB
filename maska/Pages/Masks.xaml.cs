@@ -22,10 +22,15 @@ namespace maska
     /// </summary>
     public partial class Masks : Page
     { 
-        IEnumerable<Product> currentList;
+        public IEnumerable<Product> currentList;
         public Masks()
         {
             InitializeComponent();
+            if (CurrentList.user != null)
+            {
+                if (CurrentList.user.role == 1)
+                    Add.Visibility = Visibility.Visible;
+            }
             currentList = CurrentList.products;
             LViewTours.ItemsSource = currentList;
         }
@@ -53,7 +58,7 @@ namespace maska
             if(track != null && CurrentList.user != null)
             {
                 if(CurrentList.user.role == 1)
-                    Manager.frame.Navigate(new AddEditProducts(track));
+                    Manager.frame.Navigate(new AddEditProducts(track,this));
             }
         }
         private void Back(object sender, RoutedEventArgs e)
@@ -64,6 +69,11 @@ namespace maska
         private void Basket_Click(object sender, RoutedEventArgs e)
         {
             Manager.frame.Navigate(new Basket());
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new AddEditProducts(null,this));
         }
 
         private void Buy_click(object sender, RoutedEventArgs e)
