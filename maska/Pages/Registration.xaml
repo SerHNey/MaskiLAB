@@ -105,13 +105,13 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Width="520" Height="600">
             <Label Content="Логин"  VerticalAlignment="Top" FontSize="40" Height="60" Width="128" HorizontalAlignment="Left" Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
-            <TextBox x:Name="login" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" TextWrapping="Wrap" TextChanged="login_TextChanged" Height="60" Width="520" FontSize="40" VerticalAlignment="Top"/>
+            <TextBox x:Name="login" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" TextWrapping="Wrap" Height="60" Width="520" FontSize="40" VerticalAlignment="Top"/>
             <Label Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Height="60" Width="150" Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
-            <TextBox x:Name="password" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" FontSize="40" Grid.ColumnSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="520" TextChanged="password_TextChanged"  />
+            <TextBox x:Name="password" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" FontSize="40" Grid.ColumnSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="520"   />
             <Label Content="Повторите пароль" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Height="60" Width="400" Grid.ColumnSpan="2" Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
-            <TextBox x:Name="password_Copy" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" FontSize="40" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="60" Width="520" TextChanged="password_Copy_TextChanged" />
+            <TextBox x:Name="password_Copy" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" FontSize="40" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="60" Width="520" />
             <Label Content="ФИО" VerticalAlignment="Top" FontSize="40" Height="60" Width="128" HorizontalAlignment="Left" Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
-            <TextBox x:Name="fio" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center"  Grid.ColumnSpan="2" TextWrapping="Wrap" TextChanged="login_TextChanged" Height="60" Width="520" FontSize="40" VerticalAlignment="Top" />
+            <TextBox x:Name="fio" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center"  Grid.ColumnSpan="2" TextWrapping="Wrap" Height="60" Width="520" FontSize="40" VerticalAlignment="Top" />
             <TextBlock x:Name="registration" Text="Зарегистрироваться"  TextAlignment="Center" Grid.ColumnSpan="4" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" Width="500"  FontWeight="Bold" Foreground="Black" FontSize="45" FontFamily="Bahnschrift" Cursor="Hand" MouseLeftButtonDown="registration_Click"/>
         </StackPanel>
         <TextBlock x:Name="back" Text="Вернуться назад" TextAlignment="Center" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Width="250" Height="30" FontWeight="Bold" Foreground="Black" FontSize="25" Margin="934,608,0,38" FontFamily="Bahnschrift" MouseLeftButtonDown="back_Click" Cursor="Hand"/>

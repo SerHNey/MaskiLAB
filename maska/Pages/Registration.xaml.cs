@@ -72,21 +72,6 @@ namespace maska.Pages
 
         }
 
-        private void login_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void password_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void password_Copy_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void back_Click(object sender, RoutedEventArgs e)
         {
             Manager.frame.Navigate(new Authorization());
