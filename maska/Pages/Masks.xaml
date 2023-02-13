@@ -102,8 +102,8 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Label Content="{Binding Cost, StringFormat={}{1:N2} ₽}" Grid.Column="0" FontSize="20" VerticalAlignment="Center"/>
-                                <Label Content="{Binding ProductionPersonCount, StringFormat={}{0:N2} Ост}" Grid.Column="1" FontSize="20" Margin="10 0 " VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Cost,StringFormat={}{0:0₽}}" Grid.Column="0" FontSize="20" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding ProductionPersonCount, StringFormat={}{0:N0} Шт}" Grid.Column="1" FontSize="20" Margin="10 0 " VerticalAlignment="Center"/>
                                 <Button Content="BUY" Style="{DynamicResource BuyButton}" Grid.Column="2" FontWeight="Black" Click="Buy_click" />
                             </Grid>
                         </Grid>
