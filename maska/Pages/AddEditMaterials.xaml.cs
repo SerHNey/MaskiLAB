@@ -197,6 +197,8 @@ namespace maska.Pages
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 CurrentList.db.Material.Remove(thisMaterial);
+                CurrentList.db.SaveChanges();
+                CurrentList.materials = CurrentList.db.Material.ToList();
                 Materials.LViewTours.ItemsSource = CurrentList.materials;
                 Manager.frame.GoBack();
             }

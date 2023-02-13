@@ -197,6 +197,8 @@ namespace maska.Pages
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 CurrentList.db.Product.Remove(thisproduct);
+                CurrentList.db.SaveChanges();
+                CurrentList.products = CurrentList.db.Product.ToList();
                 Masks.LViewTours.ItemsSource = CurrentList.products;
                 Manager.frame.GoBack();
             }

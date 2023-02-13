@@ -43,15 +43,15 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CountInPack" Type="int" Nullable="false" />
-          <Property Name="Unit" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountInPack" Type="int" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="10" />
           <Property Name="CountInStock" Type="float" />
-          <Property Name="MinCount" Type="float" Nullable="false" />
+          <Property Name="MinCount" Type="float" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Image" Type="nvarchar" MaxLength="100" />
-          <Property Name="MaterialTypeID" Type="int" Nullable="false" />
+          <Property Name="MaterialTypeID" Type="int" />
         </EntityType>
         <EntityType Name="MaterialCountHistory">
           <Key>
@@ -83,14 +83,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
           <Property Name="ProductTypeID" Type="int" />
-          <Property Name="ArticleNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ArticleNumber" Type="nvarchar" MaxLength="10" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Image" Type="nvarchar" MaxLength="100" />
           <Property Name="ProductionPersonCount" Type="int" />
           <Property Name="ProductionWorkshopNumber" Type="int" />
-          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="ProductCostHistory">
           <Key>
@@ -200,7 +200,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Material_MaterialType">
-          <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="1" />
+          <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="0..1" />
           <End Role="Material" Type="Self.Material" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MaterialType">
@@ -466,13 +466,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountInPack" Type="Int32" Nullable="false" />
-          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountInPack" Type="Int32" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="CountInStock" Type="Double" />
-          <Property Name="MinCount" Type="Double" Nullable="false" />
+          <Property Name="MinCount" Type="Double" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MaterialTypeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MaterialType" Relationship="Self.FK_Material_MaterialType" FromRole="Material" ToRole="MaterialType" />
@@ -504,18 +504,18 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductTypeID" Type="Int32" />
-          <Property Name="ArticleNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ProductionPersonCount" Type="Int32" />
-          <Property Name="ProductionWorkshopNumber" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="ProductTypeID" Type="Int32" Nullable="true" />
+          <Property Name="ArticleNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Name="ProductionPersonCount" Type="Int32" Nullable="true" />
+          <Property Name="ProductionWorkshopNumber" Type="Int32" Nullable="true" />
           <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
           <NavigationProperty Name="ProductCostHistory" Relationship="Self.FK_ProductCostHistory_Product" FromRole="Product" ToRole="ProductCostHistory" />
           <NavigationProperty Name="ProductMaterial" Relationship="Self.FK_ProductMaterial_Product" FromRole="Product" ToRole="ProductMaterial" />
           <NavigationProperty Name="ProductSale" Relationship="Self.FK_ProductSale_Product" FromRole="Product" ToRole="ProductSale" />
-          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="true" />
         </EntityType>
         <EntityType Name="ProductCostHistory">
           <Key>
