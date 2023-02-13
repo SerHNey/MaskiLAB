@@ -101,49 +101,30 @@
     </Page.Resources>
 
     <Grid Width="1200" Height="700">
-        <Label Content="Логин" 
-               FontSize="40"
-               Height="60"
-               Width="128"
-               Margin="0,111,0,529"
-               HorizontalAlignment="Center"
-               Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
-        <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="login" 
-                 TextWrapping="Wrap" 
+        <StackPanel Orientation="Vertical" Width="520" Height="600">
+            <Label Content="Логин"  VerticalAlignment="Top" FontSize="40" Height="60" Width="128" HorizontalAlignment="Left" Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
+            <TextBox Style="{DynamicResource TextBoxStyle1}" x:Name="login" 
                  Height="60"
-                 Width="520" Margin="340,176,340,464" FontSize="40" TextAlignment="Left"/>
-        <Label Content="Пароль" 
-               FontSize="40"
-               Height="60"
-               HorizontalAlignment="Center"
-               Width="150" Margin="0,236,0,404"
-               Foreground="Black" FontFamily="Bahnschrift"/>
-        <PasswordBox x:Name="password" 
+                 Width="520" FontSize="40" TextAlignment="Left"/>
+            <Label Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Height="60" Width="150" Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
+            <PasswordBox x:Name="password" 
                      HorizontalAlignment="Center" 
                      Height="60"
-                 Width="520" Margin="0,296,0,344" FontSize="40" />
-
-        <TextBlock x:Name="Entre"
-                   Text="Вход" 
-                   TextDecorations="Underline" 
+                 Width="520" FontSize="40" 
+                      Style="{DynamicResource PasswordBoxStyle1}"   />
+            <TextBlock x:Name="Entre"
+                   Text="Авторизироваться" 
                    TextAlignment="Center"
                    TextWrapping="WrapWithOverflow"
                    HorizontalAlignment="Center"
-                   Width="150"
+                   Width="500"
                    FontWeight="Bold" 
                    Foreground="Black"
-                   FontSize="50" Margin="0,387,0,247" 
+                   FontSize="50"
+                       Margin="0 50 0 0"
                    FontFamily="Bahnschrift" MouseLeftButtonDown="Entre_MouseLeftButtonDown" Cursor="Hand"/>
-
-        <TextBlock Text="Впервые? Вы можете" 
-                   TextAlignment="Center"
-                   TextWrapping="WrapWithOverflow"
-                   HorizontalAlignment="Left"
-                   Width="315"
-                   Foreground="Black"
-                   FontSize="30" Margin="117,602,0,56" 
-                   FontFamily="Bahnschrift"/>
-        <TextBlock x:Name="Reg"
+            <StackPanel Orientation="Vertical" Margin="100 100 100 0">
+                 <TextBlock x:Name="Reg"
                    Text="Зарегистрироваться"
                    TextDecorations="Underline" 
                    TextAlignment="Center"
@@ -152,26 +133,32 @@
                    Width="299"
                    FontWeight="Bold" 
                    Foreground="Black"
-                   FontSize="30" Margin="437,602,0,56" 
+                   FontSize="30" 
                    FontFamily="Bahnschrift" Cursor="Hand" MouseLeftButtonDown="Reg_MouseLeftButtonDown"/>
-        <TextBlock Text="или"
+            <TextBlock Text="OR"
                    TextAlignment="Center"
                    TextWrapping="WrapWithOverflow"
                    HorizontalAlignment="Left"
-                   Width="90"
+                   Width="50"
                    Foreground="Black"
-                   FontSize="30" Margin="741,602,0,56" 
+                   FontSize="30"
                    FontFamily="Bahnschrift"/>
-        <TextBlock x:Name="Gues"
-                   Text="Войти как гость"
+            <TextBlock x:Name="Gues"
+                   Text="Как гость"
                    TextDecorations="Underline" 
                    TextAlignment="Center"
                    TextWrapping="WrapWithOverflow"
                    HorizontalAlignment="Left"
-                   Width="234"
+                   Width="140"
                    FontWeight="Bold" 
                    Foreground="Black"
-                   FontSize="30" Margin="836,602,0,56" 
+                   FontSize="30" 
                    FontFamily="Bahnschrift" Cursor="Hand" MouseLeftButtonDown="Gues_MouseLeftButtonDown"/>
+            </StackPanel>
+           
+        </StackPanel>
+        
+
+
     </Grid>
 </Page>
