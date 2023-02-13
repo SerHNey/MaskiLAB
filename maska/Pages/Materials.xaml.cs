@@ -130,38 +130,16 @@ namespace maska
             LViewTours.ItemsSource = currentList;
         }
 
-        private void ClothFilter_Click(object sender, RoutedEventArgs e)
+        private void FilterByType_Click(object sender, RoutedEventArgs e)
         {
-            currentList = CurrentList.db.Material.ToList();
-            currentList = currentList.Where(material => material.MaterialTypeID == 1);
-            LViewTours.ItemsSource = currentList;
+            MenuItem mi = e.OriginalSource as MenuItem;
+            FilterByTypeName(mi.Header.ToString());
         }
 
-        private void KernelFilter_Click(object sender, RoutedEventArgs e)
+        private void FilterByTypeName(string type)
         {
             currentList = CurrentList.db.Material.ToList();
-            currentList = currentList.Where(material => material.MaterialTypeID == 2);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void SiliconeFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Material.ToList();
-            currentList = currentList.Where(material => material.MaterialTypeID == 3);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void RubberBandFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Material.ToList();
-            currentList = currentList.Where(material => material.MaterialTypeID == 4);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void CottonFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Material.ToList();
-            currentList = currentList.Where(material => material.MaterialTypeID == 5);
+            currentList = currentList.Where(material => material.MaterialType.Title == $"{type}\r\n");
             LViewTours.ItemsSource = currentList;
         }
     }

@@ -33,18 +33,18 @@
                         </StackPanel>
                     </Button.Content>
                     <Button.ContextMenu>
-                        <ContextMenu >
-                            <MenuItem Header="По типу">
-                                <MenuItem x:Name="HalfMasksFilter" Header="Полумаски" Click="HalfMasksFilter_Click"/>
-                                <MenuItem x:Name="BandagesFilter" Header="Повязки" Click="BandagesFilter_Click"/>
-                                <MenuItem x:Name="MasksFilter" Header="Маски" Click="MasksFilter_Click"/>
-                                <MenuItem x:Name="RespiratorsFilter" Header="Респираторы" Click="RespiratorsFilter_Click"/>
-                                <MenuItem x:Name="OnTheFaceFilter" Header="На лицо" Click="OnTheFaceFilter_Click"/>
-                                <MenuItem x:Name="FullFaceFilter" Header="Полнолицевые" Click="FullFaceFilter_Click"/>
-                                <MenuItem x:Name="ReplacementPartsFilter" Header="Сменные части" Click="ReplacementPartsFilter_Click"/>
-                                <MenuItem x:Name="SparePartsFilter" Header="Запасные части" Click="SparePartsFilter_Click"/>
-                                <MenuItem x:Name="HoldersFilter" Header="Держители" Click="HoldersFilter_Click"/>
-                                <MenuItem x:Name="PreFiltersFilter" Header="Предфильтры" Click="PreFiltersFilter_Click"/>
+                        <ContextMenu>
+                            <MenuItem x:Name="FilterByType" Header="По типу" Click="MenuItem_Click">
+                                <MenuItem x:Name="HalfMasksFilter" Header="Полумаски"/>
+                                <MenuItem x:Name="BandagesFilter" Header="Повязки"/>
+                                <MenuItem x:Name="MasksFilter" Header="Маски"/>
+                                <MenuItem x:Name="RespiratorsFilter" Header="Респираторы"/>
+                                <MenuItem x:Name="OnTheFaceFilter" Header="На лицо"/>
+                                <MenuItem x:Name="FullFaceFilter" Header="Полнолицевые"/>
+                                <MenuItem x:Name="ReplacementPartsFilter" Header="Сменные части"/>
+                                <MenuItem x:Name="SparePartsFilter" Header="Запасные части"/>
+                                <MenuItem x:Name="HoldersFilter" Header="Держители"/>
+                                <MenuItem x:Name="PreFiltersFilter" Header="Предфильтры"/>
                             </MenuItem>
                             <MenuItem x:Name="ClearFilter" Header="Очистить фильтры" Click="ClearFilter_Click"/>
                         </ContextMenu>

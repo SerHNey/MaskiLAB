@@ -126,79 +126,22 @@ namespace maska
             LViewTours.ItemsSource = currentList;
         }
 
-        private void HalfMasksFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 1);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void BandagesFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 2);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void MasksFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 3);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void RespiratorsFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 4);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void OnTheFaceFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 5);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void FullFaceFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 6);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void ReplacementPartsFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 7);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void SparePartsFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 8);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void HoldersFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 9);
-            LViewTours.ItemsSource = currentList;
-        }
-
-        private void PreFiltersFilter_Click(object sender, RoutedEventArgs e)
-        {
-            currentList = CurrentList.db.Product.ToList();
-            currentList = currentList.Where(product => product.ProductTypeID == 10);
-            LViewTours.ItemsSource = currentList;
-        }
-
         private void ClearFilter_Click(object sender, RoutedEventArgs e)
         {
             currentList = CurrentList.db.Product.ToList();
+            LViewTours.ItemsSource = currentList;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem mi = e.OriginalSource as MenuItem;
+            FilterItemsByType(mi.Header.ToString());
+        }
+
+        private void FilterItemsByType(string type)
+        {
+            currentList = CurrentList.db.Product.ToList();
+            currentList = currentList.Where(product => product.ProductType.Title == type);
             LViewTours.ItemsSource = currentList;
         }
     }

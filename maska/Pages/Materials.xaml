@@ -33,12 +33,12 @@
                     </Button.Content>
                     <Button.ContextMenu>
                         <ContextMenu >
-                            <MenuItem Header="По типу">
-                                <MenuItem x:Name="ClothFilter" Header="Ткань" Click="ClothFilter_Click"/>
-                                <MenuItem x:Name="KernelFilter" Header="Стержень" Click="KernelFilter_Click"/>
-                                <MenuItem x:Name="SiliconeFilter" Header="Силикон" Click="SiliconeFilter_Click"/>
-                                <MenuItem x:Name="RubberBandFilter" Header="Резинка" Click="RubberBandFilter_Click"/>
-                                <MenuItem x:Name="CottonFilter" Header="Вата" Click="CottonFilter_Click"/>
+                            <MenuItem x:Name="FilterByType" Header="По типу" Click="FilterByType_Click">
+                                <MenuItem x:Name="ClothFilter" Header="Ткань"/>
+                                <MenuItem x:Name="KernelFilter" Header="Стержень"/>
+                                <MenuItem x:Name="SiliconeFilter" Header="Силикон"/>
+                                <MenuItem x:Name="RubberBandFilter" Header="Резинка"/>
+                                <MenuItem x:Name="CottonFilter" Header="Вата"/>
                             </MenuItem>
                             <MenuItem x:Name="ClearFilter" Header="Очистить фильтры" Click="ClearFilter_Click"/>
                         </ContextMenu>
