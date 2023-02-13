@@ -24,11 +24,11 @@ namespace maska
             {
                 if (CurrentList.user.role == 1)
                 {
-                    userInfo.Content = "ФИО: "+ CurrentList.user.fio + "   " + "Роль: Администратор";
+                    userInfo.Text = "ФИО: "+ CurrentList.user.fio + "   " + "\nРоль: Администратор";
                 }
                 if (CurrentList.user.role == 2)
                 {
-                    userInfo.Content = "ФИО: "+CurrentList.user.fio + "   " + "Роль: Пользователь";
+                    userInfo.Text = "ФИО: "+CurrentList.user.fio + "   " + "\nРоль: Пользователь";
                 }
             }
 

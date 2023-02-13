@@ -17,7 +17,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.ColumnSpan="3" Grid.Column="1" VerticalAlignment="Top" Name="userInfo"/>
+        <TextBlock Grid.ColumnSpan="3" Grid.Column="1" VerticalAlignment="Top" Name="userInfo" TextWrapping="Wrap" FontSize="50" Text="113"/>
 
         <Button Grid.Column="1" Height="3in" Width="3in" Click="ProductsCatalog" >
             <Button.Content>
