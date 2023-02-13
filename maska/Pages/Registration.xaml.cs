@@ -29,6 +29,7 @@ namespace maska.Pages
         private void registration_Click(object sender, MouseButtonEventArgs e)
         {
             string log = login.Text;
+            string fioo = fio.Text;
             string pas = password.Text;
             string pas1 = password_Copy.Text;
             if (log != "")
@@ -42,7 +43,8 @@ namespace maska.Pages
                             Users user = new Users();
                             int count = MaskiLABEntities.GetContext().Users.Count();
                             user.login = log;
-
+                            user.role = 2;
+                            user.fio = fioo;
                             user.password = pas;
                             MaskiLABEntities.GetContext().Users.Add(user);
                             MaskiLABEntities.GetContext().SaveChanges();
