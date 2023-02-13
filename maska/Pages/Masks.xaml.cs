@@ -38,14 +38,14 @@ namespace maska
         {
             if (search.Text != "" && LViewTours != null)
             {
-                var filter_name = CurrentList.products.ToList().Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
+                var filter_name = currentList.Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
                 LViewTours.ItemsSource = filter_name;
             }
             else
             {
                 if(LViewTours != null)
                 {
-                    var current = CurrentList.products.ToList();
+                    var current = currentList.ToList();
                     LViewTours.ItemsSource = current;
                 }
                 
@@ -61,6 +61,7 @@ namespace maska
                     Manager.frame.Navigate(new AddEditProducts(track,this));
             }
         }
+
         private void Back(object sender, RoutedEventArgs e)
         {
             Manager.frame.GoBack();

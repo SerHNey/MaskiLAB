@@ -37,14 +37,14 @@ namespace maska
         {
             if (search.Text != "" && LViewTours != null)
             {
-                var filter_name = CurrentList.materials.ToList().Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
+                var filter_name = currentList.Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
                 LViewTours.ItemsSource = filter_name;
             }
             else
             {
                 if (LViewTours != null)
                 {
-                    var current = CurrentList.materials.ToList();
+                    var current = currentList.ToList();
                     LViewTours.ItemsSource = current;
                 }
 
