@@ -99,7 +99,7 @@
         </Style>
     </Page.Resources>
 
-    <Grid>
+    <Grid Margin="0,0,0,-64">
         <Grid.ColumnDefinitions>
 
         </Grid.ColumnDefinitions>
@@ -112,8 +112,8 @@
             <TextBox x:Name="password_Copy" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center" FontSize="40" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="60" Width="520" TextChanged="password_Copy_TextChanged" />
             <Label Content="ФИО" VerticalAlignment="Top" FontSize="40" Height="60" Width="128" HorizontalAlignment="Left" Foreground="Black" FontWeight="Normal" FontStyle="Normal" FontFamily="Bahnschrift"/>
             <TextBox x:Name="fio" Style="{DynamicResource TextBoxStyle1}" HorizontalAlignment="Center"  Grid.ColumnSpan="2" TextWrapping="Wrap" TextChanged="login_TextChanged" Height="60" Width="520" FontSize="40" VerticalAlignment="Top" />
-            <TextBlock x:Name="registration" Text="Зарегистрироваться" TextDecorations="Underline" TextAlignment="Center" Grid.ColumnSpan="4" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" Width="500"  FontWeight="Bold" Foreground="Black" FontSize="45" FontFamily="Bahnschrift" Cursor="Hand" MouseLeftButtonDown="registration_Click"/>
+            <TextBlock x:Name="registration" Text="Зарегистрироваться"  TextAlignment="Center" Grid.ColumnSpan="4" TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" Width="500"  FontWeight="Bold" Foreground="Black" FontSize="45" FontFamily="Bahnschrift" Cursor="Hand" MouseLeftButtonDown="registration_Click"/>
         </StackPanel>
-        <TextBlock x:Name="back" Text="Вернуться назад" TextDecorations="Underline" TextAlignment="Center" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Width="250" Height="30" FontWeight="Bold" Foreground="Black" FontSize="25" Margin="934,608,0,38" FontFamily="Bahnschrift" MouseLeftButtonDown="back_Click" Cursor="Hand"/>
+        <TextBlock x:Name="back" Text="Вернуться назад" TextAlignment="Center" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Width="250" Height="30" FontWeight="Bold" Foreground="Black" FontSize="25" Margin="934,608,0,38" FontFamily="Bahnschrift" MouseLeftButtonDown="back_Click" Cursor="Hand"/>
     </Grid>
 </Page>
