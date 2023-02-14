@@ -19,13 +19,13 @@
                 <ColumnDefinition Width="0.4*"/>
             </Grid.ColumnDefinitions>
             <Button Content="BACK" Margin="1in 0.05in" FontSize="20" FontWeight="Black" Click="Back" Style="{DynamicResource BuyButton}"/>
-            <Button x:Name="Add" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Grid.Column="1" HorizontalAlignment="Left" Click="Add_Click" Visibility="Hidden">
+            <Button x:Name="Add" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Grid.Column="1" HorizontalAlignment="Left" Click="Add_Click" Visibility="Hidden" ToolTip="Add Product">
                 <Image Source="../Image/mask.png" Stretch="Uniform"/>
             </Button>
             <TextBox x:Name="search" Style="{DynamicResource TextBoxStyle1}" Grid.Column="1" MaxWidth="5in" TextChanged="TBoxSearch_TextChanged"/>
 
             <StackPanel Orientation="Horizontal" Grid.Column="2" >
-                <Button x:Name="FilerBtn" Style="{DynamicResource ButtonStyle1}" Click="FilerBtn_Click">
+                <Button x:Name="FilerBtn" Style="{DynamicResource ButtonStyle1}" Click="FilerBtn_Click" ToolTip="Filter">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="../Image/filter.png" Stretch="Uniform"/>
@@ -50,7 +50,7 @@
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
-                <Button x:Name="SortBtn" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Click="SortBtn_Click">
+                <Button x:Name="SortBtn" Style="{DynamicResource ButtonStyle1}" Margin="0.1in 0.08in" Click="SortBtn_Click" ToolTip="Sort">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="../Image/sort.png" Stretch="Uniform"/>

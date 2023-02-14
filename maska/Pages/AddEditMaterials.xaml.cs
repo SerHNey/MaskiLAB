@@ -33,7 +33,7 @@ namespace maska.Pages
         {
             InitializeComponent();
             Materials = materials;
-            if(material != null )
+            if (material != null)
             {
                 Title.Text = material.Title;
                 Cost.Text = material.Cost.ToString();
@@ -42,19 +42,19 @@ namespace maska.Pages
                 foreach (var item in CurrentList.db.MaterialType.ToList())
                 {
                     Type.Items.Add(item.Title);
-                    if(item.ID == material.MaterialTypeID)
-                        Type.SelectedIndex= i;
+                    if (item.ID == material.MaterialTypeID)
+                        Type.SelectedIndex = i;
                     i++;
                 }
-                if(material.Image != null | material.Image == "")
+                if (material.Image != null | material.Image == "")
                 {
-                string imagepath = material.Image;
-                imagepath = imagepath.Replace("\\", "/");
-                Regex reg = new Regex("/");
-                imagepath = reg.Replace(imagepath, "../", 1);
-                imagepath = System.IO.Path.GetFullPath(imagepath);
-                imagepath = imagepath.Replace("\\bin", "");
-                Image.ImageSource = BitmapFromUri(new Uri(imagepath));
+                    string imagepath = material.Image;
+                    imagepath = imagepath.Replace("\\", "/");
+                    Regex reg = new Regex("/");
+                    imagepath = reg.Replace(imagepath, "../", 1);
+                    imagepath = System.IO.Path.GetFullPath(imagepath);
+                    imagepath = imagepath.Replace("\\bin", "");
+                    Image.ImageSource = BitmapFromUri(new Uri(imagepath));
                 }
                 thisMaterial = material;
             }
@@ -115,7 +115,7 @@ namespace maska.Pages
         {
             try
             {
-                if(thisMaterial != null)
+                if (thisMaterial != null)
                     pathTo = "\\materials\\" + thisMaterial.ID + ".jpg";
                 else
                     pathTo = "\\products\\" + CurrentList.db.Material.ToList().Count + 1 + ".jpg";
@@ -126,11 +126,11 @@ namespace maska.Pages
                 path = path.Replace("\\bin", "");
                 var encoder = new PngBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create((BitmapSource)Image.ImageSource));
-                using (FileStream stream = new FileStream(path, FileMode.Create))encoder.Save(stream);
+                using (FileStream stream = new FileStream(path, FileMode.Create)) encoder.Save(stream);
             }
             catch { }
         }
-            
+
         public static ImageSource BitmapFromUri(Uri source)
         {
             BitmapImage bitmap = new BitmapImage();
@@ -149,7 +149,7 @@ namespace maska.Pages
                 return;
             try
             {
-                int.Parse(text[text.Length-1].ToString());
+                int.Parse(text[text.Length - 1].ToString());
             }
             catch
             {
@@ -171,13 +171,15 @@ namespace maska.Pages
             thisMaterial.Title = Title.Text;
             thisMaterial.Cost = decimal.Parse(Cost.Text);
             thisMaterial.CountInPack = int.Parse(CountPack.Text);
-            thisMaterial.MaterialTypeID = CurrentList.db.MaterialType.ToList().Where(x => x.Title== Type.SelectedValue).FirstOrDefault().ID;
+            thisMaterial.MaterialTypeID = CurrentList.db.MaterialType.ToList().Where(x => x.Title == Type.SelectedValue).FirstOrDefault().ID;
             if (pathTo != null)
             {
                 thisMaterial.Image = pathTo;
             }
             else
+            {
                 thisMaterial.Image = null;
+            }
             if (add)
             {
                 CurrentList.db.Material.Add(thisMaterial);

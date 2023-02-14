@@ -38,8 +38,8 @@ namespace maska
         {
             if (search.Text != "" && LViewTours != null)
             {
-                var filter_name = currentList.Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
-                LViewTours.ItemsSource = filter_name;
+                var filterName = currentList.Where(t => t.Title.ToLower().Contains(search.Text.ToLower()));
+                LViewTours.ItemsSource = filterName;
             }
             else
             {
